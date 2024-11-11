@@ -5,6 +5,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias mkdir='mkdir -p'
+alias ls='ls -lA --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+
+# navigation aliases
+alias ..='cd ..'
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init --cmd cd bash)"
+fi
