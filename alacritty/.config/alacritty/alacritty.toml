@@ -1,6 +1,11 @@
 
 [general]
-import = ["~/.config/alacritty/colors.toml"]
+import = [
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
 
 [window]
 padding = { x = 8, y = 8 }
@@ -18,3 +23,6 @@ hide_when_typing = true
 bindings = [
   { mouse = "Right", action = "Paste" }
 ]
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
