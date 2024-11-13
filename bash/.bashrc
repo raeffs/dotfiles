@@ -9,6 +9,10 @@ alias mkdir='mkdir -p'
 alias ls='ls -lA --color=auto'
 alias grep='grep --color=auto'
 
+if command -v btop &> /dev/null; then
+  alias top='btop'
+fi
+
 # navigation aliases
 alias ..='cd ..'
 
