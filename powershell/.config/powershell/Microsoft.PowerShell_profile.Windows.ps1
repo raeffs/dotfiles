@@ -10,6 +10,15 @@ oh-my-posh init pwsh --config '~\.config\oh-my-posh\oh-my-posh.config.yml' | Inv
 
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 
+# -----------------------------------------------------------------------------
+# use bat (https://github.com/sharkdp/bat) instead of cat
+# install with: `winget install sharkdp.bat`
+# -----------------------------------------------------------------------------
+if (Get-Command "bat" -errorAction SilentlyContinue)
+{
+  Set-Alias -Name cat -Value "bat"
+}
+
 # navigation aliases
 Function .. { Set-Location .. }
 
