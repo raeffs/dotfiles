@@ -38,6 +38,18 @@ if (Get-Command "bat" -errorAction SilentlyContinue)
 }
 
 # -----------------------------------------------------------------------------
+# use ripgrep (https://github.com/BurntSushi/ripgrep) instead of grep
+#
+# winget install BurntSushi.ripgrep.MSVC
+# -----------------------------------------------------------------------------
+if (Get-Command "rg" -errorAction SilentlyContinue)
+{
+  Function Exec-Ripgrep { rg -i $args }
+  
+  Set-Alias -Name grep -Value Exec-Ripgrep
+}
+
+# -----------------------------------------------------------------------------
 # navigation aliases
 # -----------------------------------------------------------------------------
 Function .. { Set-Location .. }
