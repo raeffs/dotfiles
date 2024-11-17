@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 3
+
+final_space: true
+
+palette:
+  red: "#e78284"
+  peach: "#ef9f76"
+  yellow: "#e5c890"
+  green: "#a6d189"
+  blue: "#8caaee"
+  mauve: "#ca9ee6"
+  crust: "#232634"
+
+blocks:
+- type: prompt
+  alignment: left
+  newline: true
+  segments:
+  - type: "session"
+    template: "{{ .UserName }}{{ if .SSHSession }} 󰁥  {{ .HostName }}{{ end }} "
+    style: "diamond"
+    leading_diamond: "\ue0b6"
+    foreground: "p:crust"
+    background: "p:red"
+  - type: "path"
+    template: " {{ .Path }} "
+    style: "powerline"
+    powerline_symbol: "\ue0b0"
+    properties:
+      style: "agnoster_short"
+      home_icon: "~"
+      max_depth: 3
+    foreground: "p:crust"
+    background: "p:peach"
+  - type: "git"
+    template: " {{ .HEAD }} "
+    style: "powerline"
+    powerline_symbol: "\ue0b0"
+    foreground: "p:crust"
+    background: "p:yellow"
+    properties:
+      branch_icon: "\ue725 "
+      cherry_pick_icon: "\ue29b "
+      commit_icon: "\uf417 "
+      fetch_status: false
+      fetch_upstream_icon: false
+      merge_icon: "\ue727 "
+      no_commits_icon: "\uf0c3 "
+      rebase_icon: "\ue728 "
+      revert_icon: "\uf0e2 "
+      tag_icon: "\uf412 "
+  - type: dotnet
+    template: " 󰪮  {{ .Full }} "
+    style: powerline
+    powerline_symbol: "\ue0b0"
+    foreground: "p:crust"
+    background: "p:green"
+  - type: node
+    template: "   {{ .Full }} "
+    style: powerline
+    powerline_symbol: "\ue0b0"
+    foreground: "p:crust"
+    background: "p:green"
+  - type: docker
+    template: "   "
+    style: powerline
+    powerline_symbol: "\ue0b0"
+    foreground: "p:crust"
+    background: "p:blue"
+  - type: time
+    template: " {{ .CurrentDate | date .Format }}"
+    style: diamond
+    trailing_diamond: "\ue0b4"
+    foreground: "p:crust"
+    background: "p:mauve"
+    properties:
+      time_format: "15:04"
