@@ -7,11 +7,21 @@
 Import-Module posh-git
 
 # -----------------------------------------------------------------------------
+# initialize starship (https://github.com/starship/starship)
+#
+# winget install --id Starship.Starship
+# -----------------------------------------------------------------------------
+if (Get-Command "starship" -errorAction SilentlyContinue)
+{
+  Invoke-Expression (&starship init powershell)
+}
+
+# -----------------------------------------------------------------------------
 # initialize oh-my-posh (https://github.com/JanDeDobbeleer/oh-my-posh)
 #
 # winget install JanDeDobbeleer.OhMyPosh -s winget
 # -----------------------------------------------------------------------------
-if (Get-Command "oh-my-posh" -errorAction SilentlyContinue)
+elseif (Get-Command "oh-my-posh" -errorAction SilentlyContinue)
 {
   oh-my-posh init pwsh --config '~\.config\oh-my-posh\oh-my-posh.config.yml' | Invoke-Expression
 }
