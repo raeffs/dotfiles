@@ -34,7 +34,7 @@ if (Get-Command "zoxide" -errorAction SilentlyContinue)
 # -----------------------------------------------------------------------------
 if (Get-Command "bat" -errorAction SilentlyContinue)
 {
-  Set-Alias -Name cat -Value "bat"
+  Set-Alias -Name cat -Value "bat" -Option AllScope
 }
 
 # -----------------------------------------------------------------------------
