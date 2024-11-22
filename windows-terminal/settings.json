@@ -35,6 +35,7 @@
             "colorScheme": "Catppuccin Frappe",
             "font": 
             {
+                "cellHeight": "1.3",
                 "face": "FantasqueSansM Nerd Font",
                 "size": 13
             },
