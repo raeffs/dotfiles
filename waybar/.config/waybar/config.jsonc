@@ -1,22 +1,25 @@
 {
   "position": "top",
-  "modules-left": [
-    "hyprland/workspaces"
+  "include": [
+    "~/.config/waybar/modules.jsonc"
   ],
-  "modules-center": [
+  "modules-left": [
     "hyprland/window"
   ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
   "modules-right": [
-    "pulseaudio",
-    "bluetooth",
-    "network",
     "battery",
+    "tray",
+    "cpu",
+    "memory",
+    "disk",
+    "pulseaudio",
+    "network",
+    "bluetooth",
     "clock"
   ],
-  "clock": {
-    "format": "  {:%H:%M}",
-    "tooltip-format": "{:%A, %d. %B %Y (W%V)}"
-  },
   "battery": {
     "interval": 5,
     "states": {
@@ -39,26 +42,20 @@
     ],
     "tooltip-format": "{timeTo}"
   },
-  "network": {
-    "format-wifi": "  {essid}",
-    "format-ethernet": "󰤭  Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "  Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
-  },
-  "bluetooth": {
-    "format": " {status} "
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}% ",
-    "format-muted": "  ",
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
     "format-icons": {
-      "default": [
-        "",
-        "",
-        " "
-      ]
+      "urgent": "",
+      "active": "",
+      "default": ""
     },
-    "on-click": "pavucontrol"
+    "persistent-workspaces": {
+      "*": 10
+    }
   }
 }
