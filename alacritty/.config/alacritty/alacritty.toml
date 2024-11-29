@@ -13,7 +13,7 @@ opacity = 1
 
 [font]
 normal = { family = "FantasqueSansM Nerd Font" }
-size = 12
+size = 16
 
 [selection]
 save_to_clipboard = true
