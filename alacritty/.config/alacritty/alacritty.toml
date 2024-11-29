@@ -29,6 +29,5 @@ style = { shape = "Block", blinking = "Always" }
 
 [keyboard]
 bindings = [
-  { key = "V", mods = "Control", action = "Paste" },
-  { key = "C", mods = "Control", action = "Copy" }
+  { key = "V", mods = "Control", action = "Paste" }
 ]
