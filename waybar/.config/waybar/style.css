@@ -36,6 +36,8 @@ window#waybar {
     margin-bottom: 6px;
     margin-left: 3px;
     margin-right: 3px;
+    border-width: 0.2px;
+    border-style: solid;
 }
 
 button {
