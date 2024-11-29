@@ -4,10 +4,10 @@
     "~/.config/waybar/modules.jsonc"
   ],
   "modules-left": [
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   "modules-center": [
-    "hyprland/workspaces"
+    "hyprland/window"
   ],
   "modules-right": [
     "battery",
@@ -15,6 +15,7 @@
     "cpu",
     "memory",
     "disk",
+    "disk#home",
     "pulseaudio",
     "network",
     "bluetooth",

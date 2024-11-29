@@ -8,12 +8,10 @@
 
 window#waybar {
     background: transparent;
-    background-color: @crust;
+    background-color: rgba(17, 17, 27, 0.9);
     color: @overlay0;
-    opacity: 0.9;
 }
 
-#window,
 #pulseaudio,
 #clock,
 #battery,
@@ -28,13 +26,16 @@ window#waybar {
 #mode,
 #bluetooth,
 #scratchpad {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 8px;
-    margin-right: 8px;
-  
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 button {
@@ -68,6 +69,7 @@ button:hover {
 
 #clock {
     color: @mauve;
+    margin-right: 8px;
 }
 
 #bluetooth {

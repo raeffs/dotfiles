@@ -66,5 +66,11 @@
         "format": "󰋊 {percentage_used}%",
         "path": "/",
         "on-click": "~/.config/defaults/system-monitor.sh"
+    },
+    "disk#home": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/home",
+        "on-click": "~/.config/defaults/system-monitor.sh"
     }
 }
