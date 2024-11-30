@@ -8,10 +8,10 @@
 
 window#waybar {
     background: transparent;
-    background-color: rgba(35, 38, 52, 0.9);
     color: @overlay0;
 }
 
+#window,
 #pulseaudio,
 #clock,
 #battery,
@@ -25,48 +25,61 @@ window#waybar {
 #network,
 #mode,
 #bluetooth,
-#scratchpad {
-    background-color: rgba(255, 255, 255, 0.1);
+#workspaces button {
+    background-color: rgba(35, 38, 52, 0.9);
     border-radius: 4px;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
     margin-top: 6px;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     margin-left: 3px;
     margin-right: 3px;
-    border-width: 0.2px;
+    border-width: 2px;
     border-style: solid;
+}
+
+#window {
+    border-width: 0;
+    color: @text;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#tray {
+    border-width: 0;
+    background-color: transparent;
 }
 
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
     border-radius: 0;
+    color: @overlay0;
 }
 
 button:hover {
     background: inherit;
-    color: @mauve;
+    color: @sapphire;
 }
 
 #workspaces button {
-    padding: 0 10px;
+    border-color: rgba(35, 38, 52, 0.9);
 }
 
 #workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @rosewater;
 }
 
 #workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @mauve;
+    font-weight: bold;
+    color: @blue;
+    border-color: @blue;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
 }
 
 #clock {
@@ -102,12 +115,6 @@ button:hover {
     color: @red;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
+#workspaces {
+    margin-left: 5px;
 }
