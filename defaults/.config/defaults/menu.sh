@@ -1,1 +1,1 @@
-wofi --show drun
+rofi -show drun
