@@ -1,4 +1,4 @@
-@import "mocha.css"; 
+@import "frappe.css"; 
 
 * {
     font-family: "FantasqueSansM Nerd Font";
@@ -8,7 +8,7 @@
 
 window#waybar {
     background: transparent;
-    background-color: rgba(17, 17, 27, 0.9);
+    background-color: rgba(35, 38, 52, 0.9);
     color: @overlay0;
 }
 
