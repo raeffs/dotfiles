@@ -1,0 +1,52 @@
+* {
+    font-family: "FantasqueSansM Nerd Font";
+    font-size: 20px;
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(48, 52, 70, 0.90);
+}
+
+button {
+	border-radius: 2px;
+	border-color: #85c1dc;
+	text-decoration-color: #c6d0f5;
+	color: #c6d0f5;
+	background-color: #292c3c;
+	border-style: solid;
+	border-width: 2px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20%;
+}
+
+button:focus, button:active, button:hover {
+	background-color: rgb(63, 66, 85);
+	outline-style: none;
+}
+
+#lock {
+    background-image: image(url("icons/lock.svg"));
+}
+
+#logout {
+    background-image: image(url("icons/logout.svg"));
+}
+
+#suspend {
+    background-image: image(url("icons/suspend.svg"));
+}
+
+#hibernate {
+    background-image: image(url("icons/hibernate.svg"));
+}
+
+#shutdown {
+    background-image: image(url("icons/shutdown.svg"));
+}
+
+#reboot {
+    background-image: image(url("icons/reboot.svg"));
+}

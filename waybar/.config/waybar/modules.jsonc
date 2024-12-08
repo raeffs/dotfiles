@@ -1,4 +1,9 @@
 {
+    "custom/power-menu": {
+        "format": " ",
+        "on-click": "~/.config/scripts/power-menu.sh",
+        "tooltip-format": "Power Menu"
+    },
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace r-1",
         "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -60,7 +65,8 @@
     },
     "tray": {
         "icon-size": 20,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": true
     },
     "cpu": {
         "interval": 1,

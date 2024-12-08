@@ -1,7 +1,8 @@
 {
   "position": "top",
   "include": [
-    "~/.config/waybar/modules.jsonc"
+    "~/.config/waybar/modules.jsonc",
+    "~/.config/waybar/groups.jsonc"
   ],
   "modules-left": [
     "hyprland/workspaces"
@@ -12,14 +13,12 @@
   "modules-right": [
     "battery",
     "tray",
-    "cpu",
-    "memory",
-    "disk",
-    "disk#home",
+    "group/sysinfo",
     "pulseaudio",
     "network",
     "bluetooth",
-    "clock"
+    "clock",
+    "custom/power-menu"
   ],
   "battery": {
     "interval": 5,
