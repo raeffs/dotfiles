@@ -9,8 +9,7 @@ fi
 
 if [[ "$1" == "lock" ]]; then
     echo ":: Lock"
-    sleep 1
-    hyprlock    
+    hyprlock
 fi
 
 if [[ "$1" == "reboot" ]]; then
