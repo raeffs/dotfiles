@@ -9,7 +9,9 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/space",
+    "custom/weather"
   ],
   "modules-right": [
     "battery",

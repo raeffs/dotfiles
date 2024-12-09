@@ -25,7 +25,7 @@ button:hover {
 
 #workspaces button,
 #window,
-#clock,
+.modules-center,
 .modules-right {
     background-color: rgba(35, 38, 52, 0.9);
     color: @text;
@@ -62,11 +62,15 @@ window#waybar.empty #window {
     border-color: transparent;
 }
 
+.modules-center,
 .modules-right {
     margin-right: 8px;
     padding-left: 4px;
     padding-right: 4px;
 }
+
+#clock,
+#custom-weather,
 
 #bluetooth,
 #network,

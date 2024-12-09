@@ -1,8 +1,19 @@
 {
+    "custom/space": {
+        "format": "|",
+        "tooltip-format": ""
+    },
     "custom/power-menu": {
         "format": " ",
         "on-click": "~/.config/scripts/power-menu.sh",
         "tooltip-format": "Power Menu"
+    },
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar --location 'Rothenburg, Switzerland'",
+        "return-type": "json"
     },
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace r-1",
