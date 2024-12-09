@@ -5,20 +5,22 @@
     "~/.config/waybar/groups.jsonc"
   ],
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/window"
+    "clock"
   ],
   "modules-right": [
     "battery",
     "tray",
-    "group/sysinfo",
+    "cpu",
+    "memory",
+    "disk",
+    "disk#home",
     "pulseaudio",
     "network",
-    "bluetooth",
-    "clock",
-    "custom/power-menu"
+    "bluetooth"
   ],
   "battery": {
     "interval": 5,

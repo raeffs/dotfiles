@@ -10,13 +10,10 @@
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
-        "format": "{}",
-        "persistent-workspaces": {
-            "*": 5
-        }
+        "format": "{}"
     },
     "clock": {
-        "format": "󰥔  {:%H:%M}",
+        "format": "{:%H:%M}",
         "on-click": "ags toggle calendar",
         "tooltip-format": "{:%A, %d. %B %Y (W%V)}"
     },
