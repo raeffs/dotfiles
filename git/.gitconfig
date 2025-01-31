@@ -1,0 +1,9 @@
+[user]
+	email = git@raeffs.dev
+	name = Raphael Fleischlin
+
+[init]
+	defaultBranch = main
+
+[include]
+    path = local.gitconfig
