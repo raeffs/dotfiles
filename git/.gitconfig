@@ -6,4 +6,7 @@
 	defaultBranch = main
 
 [include]
+    path = windows.gitconfig
+
+[include]
     path = local.gitconfig
