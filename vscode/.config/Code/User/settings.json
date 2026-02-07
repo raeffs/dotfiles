@@ -1,0 +1,11 @@
+{
+    "breadcrumbs.enabled": false,
+    "chat.disableAIFeatures": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "scm.repositories.selectionMode": "single",
+    "telemetry.telemetryLevel": "off",
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false
+}
