@@ -24,5 +24,8 @@
   "workbench.navigationControl.enabled": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "workbench.tips.enabled": false
+  "workbench.tips.enabled": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
