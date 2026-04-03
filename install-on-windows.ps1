@@ -15,3 +15,5 @@ New-Item -Path "$TargetDir\Documents\WindowsPowerShell\Microsoft.PowerShell_prof
 $windowsTerminalPackage = Get-AppxPackage -Name Microsoft.WindowsTerminal
 $windowsTerminalSettings = "$TargetDir\AppData\Local\packages\$($windowsTerminalPackage.PackageFamilyName)\LocalState\settings.json"
 New-Item -Path $windowsTerminalSettings -Type SymbolicLink -Value "$DotfilesDir\windows-terminal\windows\settings.json" -Force
+
+New-Item -Path "$TargetDir\.claude\settings.json" -Type SymbolicLink -Value "$DotfilesDir\claude\.claude\settings.json" -Force
