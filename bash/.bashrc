@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+fi
+
 alias mkdir='mkdir -p'
 alias ls='ls -lA --color=auto'
 alias grep='grep --color=auto'
@@ -30,3 +34,6 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
+
+export PATH="$HOME/.deno/bin:$PATH"
+source $HOME/.local/share/bash-completion/completions/deno.bash
