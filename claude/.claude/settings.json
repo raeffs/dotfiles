@@ -14,5 +14,13 @@
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ai-tools": {
+      "source": {
+        "source": "url",
+        "url": "https://code.raeffs.dev/ai-tools/claude-marketplace/raw/branch/main/marketplace.json"
+      }
+    }
   }
 }
