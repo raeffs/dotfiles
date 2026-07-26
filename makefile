@@ -1,5 +1,5 @@
 all:
-	stow --verbose --target=$$HOME --restow --ignore=windows */
+	stow --verbose --no-folding --target=$$HOME --restow --ignore=windows */
 delete:
-	stow --verbose --target=$$HOME --delete */
+	stow --verbose --no-folding --target=$$HOME --delete */
 
