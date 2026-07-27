@@ -55,8 +55,15 @@ if (Get-Command "bat" -errorAction SilentlyContinue)
 if (Get-Command "rg" -errorAction SilentlyContinue)
 {
   Function Exec-Ripgrep { rg -i $args }
-  
+
   Set-Alias -Name grep -Value Exec-Ripgrep
+}
+
+# -----------------------------------------------------------------------------
+# dotnet completions
+# -----------------------------------------------------------------------------
+if (Get-Command "dotnet" -ErrorAction SilentlyContinue) {
+  dotnet completions script pwsh | Out-String | Invoke-Expression
 }
 
 # -----------------------------------------------------------------------------
