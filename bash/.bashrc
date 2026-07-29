@@ -50,3 +50,7 @@ fi
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init --cmd cd bash)"
 fi
+
+if command -v tug &> /dev/null; then
+  eval "$(tug completions bash)"
+fi
