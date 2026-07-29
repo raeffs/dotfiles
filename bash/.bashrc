@@ -2,12 +2,35 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
+# ---------------------------------------------------------------
+# environment — runs for ALL shells (interactive, login, ssh cmd)
+# ---------------------------------------------------------------
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
+
+export PATH="$HOME/.deno/bin:$PATH"
+
+# ---------------------------------------------------------------
+# If not running interactively, don't do anything below this line
+# ---------------------------------------------------------------
+
 [[ $- != *i* ]] && return
+
+# ---------------------------------------------------------------
+# interactive only — aliases, prompt, completions
+# ---------------------------------------------------------------
 
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
 fi
+
+[[ -f "$HOME/.local/share/bash-completion/completions/deno.bash" ]] && \
+  . "$HOME/.local/share/bash-completion/completions/deno.bash"
 
 alias mkdir='mkdir -p'
 alias ls='ls -lA --color=auto'
@@ -27,13 +50,3 @@ fi
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init --cmd cd bash)"
 fi
-
-export PATH="$HOME/.local/bin:$PATH"
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
-
-export PATH="$HOME/.deno/bin:$PATH"
-source $HOME/.local/share/bash-completion/completions/deno.bash
