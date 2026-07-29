@@ -1,6 +1,7 @@
 [user]
     email = git@raeffs.dev
     name = Raphael Fleischlin
+	signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwwIQT6P2wUHnjXl0dFTRS8wqas+a4EtmI+EAMwyLo6
 
 [init]
     defaultBranch = main
@@ -27,6 +28,7 @@
     autocorrect = prompt
 [commit]
     verbose = true
+	gpgSign = true
 [rerere]
     enabled = true
     autoupdate = true
@@ -48,3 +50,5 @@
 
 [include]
     path = local.gitconfig
+[gpg]
+	format = ssh
