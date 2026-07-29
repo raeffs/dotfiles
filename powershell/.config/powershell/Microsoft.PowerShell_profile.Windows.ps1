@@ -4,14 +4,16 @@
 #
 # Install-Module posh-git -Scope CurrentUser -Force
 # -----------------------------------------------------------------------------
-Import-Module posh-git
+if (Get-Module -ListAvailable -Name posh-git) {
+  Import-Module posh-git
+}
 
 # -----------------------------------------------------------------------------
 # initialize starship (https://github.com/starship/starship)
 #
 # winget install --id Starship.Starship
 # -----------------------------------------------------------------------------
-if (Get-Command "starship" -errorAction SilentlyContinue)
+if (Get-Command "starship" -ErrorAction SilentlyContinue)
 {
   Invoke-Expression (&starship init powershell)
 }
@@ -21,7 +23,7 @@ if (Get-Command "starship" -errorAction SilentlyContinue)
 #
 # winget install JanDeDobbeleer.OhMyPosh -s winget
 # -----------------------------------------------------------------------------
-elseif (Get-Command "oh-my-posh" -errorAction SilentlyContinue)
+elseif (Get-Command "oh-my-posh" -ErrorAction SilentlyContinue)
 {
   oh-my-posh init pwsh --config '~\.config\oh-my-posh\oh-my-posh.config.yml' | Invoke-Expression
 }
@@ -32,7 +34,7 @@ elseif (Get-Command "oh-my-posh" -errorAction SilentlyContinue)
 # winget install ajeetdsouza.zoxide
 # winget install fzf
 # -----------------------------------------------------------------------------
-if (Get-Command "zoxide" -errorAction SilentlyContinue)
+if (Get-Command "zoxide" -ErrorAction SilentlyContinue)
 {
   Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 }
@@ -42,7 +44,7 @@ if (Get-Command "zoxide" -errorAction SilentlyContinue)
 #
 # winget install sharkdp.bat
 # -----------------------------------------------------------------------------
-if (Get-Command "bat" -errorAction SilentlyContinue)
+if (Get-Command "bat" -ErrorAction SilentlyContinue)
 {
   Set-Alias -Name cat -Value "bat" -Option AllScope
 }
@@ -52,11 +54,11 @@ if (Get-Command "bat" -errorAction SilentlyContinue)
 #
 # winget install BurntSushi.ripgrep.MSVC
 # -----------------------------------------------------------------------------
-if (Get-Command "rg" -errorAction SilentlyContinue)
+if (Get-Command "rg" -ErrorAction SilentlyContinue)
 {
-  Function Exec-Ripgrep { rg -i $args }
+  Function Invoke-Ripgrep { rg -i $args }
 
-  Set-Alias -Name grep -Value Exec-Ripgrep
+  Set-Alias -Name grep -Value Invoke-Ripgrep
 }
 
 # -----------------------------------------------------------------------------
