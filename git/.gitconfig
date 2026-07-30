@@ -28,7 +28,7 @@
     autocorrect = prompt
 [commit]
     verbose = true
-	gpgSign = true
+	gpgSign = false
 [rerere]
     enabled = true
     autoupdate = true
