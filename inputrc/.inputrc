@@ -2,5 +2,6 @@
 # make tab completion case insensitive
 set completion-ignore-case on
 
-# show auto completion list without double tab
-set show-all-if-ambiguous on
+# cycle through the completions on tab instead of completing the common prefix
+TAB: menu-complete
+"\e[Z": menu-complete-backward
