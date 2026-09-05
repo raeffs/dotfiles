@@ -15,6 +15,9 @@ export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
 export PATH="$HOME/.deno/bin:$PATH"
 
+# opencode
+export PATH=/home/raphael/.opencode/bin:$PATH
+
 # ---------------------------------------------------------------
 # If not running interactively, don't do anything below this line
 # ---------------------------------------------------------------
