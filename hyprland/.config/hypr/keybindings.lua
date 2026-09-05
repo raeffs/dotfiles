@@ -31,6 +31,8 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(explorer))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("qs ipc call dock toggle"))
 -- Bar
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
+-- Zen mode: bar and dock hidden together
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("qs ipc call zen toggle"))
 
 ------------------------
 ---- WINDOW CONTROL ----
