@@ -1,0 +1,35 @@
+#!/bin/sh
+# Default applications for the desktop session.
+#
+#   app <name> [args...]  run the default app, passing extra args through
+#   app -p <name>         print its command instead of running it
+#
+# Extra args let you embed one app in another, e.g.
+#   app terminal -e nmtui
+
+set -eu
+
+print_only=false
+if [ "${1-}" = "-p" ]; then
+    print_only=true
+    shift
+fi
+
+case "${1-}" in
+    terminal) cmd="alacritty" ;;
+    explorer) cmd="nautilus" ;;
+    launcher) cmd="qs ipc call launcher toggle" ;;
+    *)
+        echo "usage: ${0##*/} [-p] terminal|explorer|launcher [args...]" >&2
+        exit 2
+        ;;
+esac
+shift
+
+if [ "$print_only" = true ]; then
+    printf '%s\n' "$cmd"
+else
+    # word splitting is intentional: $cmd may carry arguments
+    # shellcheck disable=SC2086
+    exec $cmd "$@"
+fi
