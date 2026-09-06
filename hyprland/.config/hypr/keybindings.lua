@@ -33,6 +33,8 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("qs ipc call dock toggle"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
 -- Zen mode: bar and dock hidden together
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("qs ipc call zen toggle"))
+-- Lock screen: its own qs process, so a shell reload cannot drop it
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("qs -n -p ~/.config/quickshell/lock.qml"))
 
 ------------------------
 ---- WINDOW CONTROL ----
