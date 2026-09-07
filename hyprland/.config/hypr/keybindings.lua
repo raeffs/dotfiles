@@ -49,10 +49,14 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 ---- WORKSPACE CONTROL ----
 ---------------------------
 
--- Next Workspace
-hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "e+1" }))
--- Previous Workspace
-hl.bind("ALT + SHIFT + TAB", hl.dsp.focus({ workspace = "e-1" }))
+-- Workspace switcher in the shell: hold ALT, tap TAB, release ALT. The
+-- release bind is transparent so the TAB press cannot shadow it, and it
+-- carries ALT because Hyprland matches a released modifier against the
+-- mods the bind asks for.
+hl.bind("ALT + TAB",         hl.dsp.exec_cmd("qs ipc call switcher next"))
+hl.bind("ALT + SHIFT + TAB", hl.dsp.exec_cmd("qs ipc call switcher prev"))
+hl.bind("ALT + Alt_L",       hl.dsp.exec_cmd("qs ipc call switcher commit"),
+        { release = true, transparent = true })
 
 local function set_layout(layout)
     return function()
