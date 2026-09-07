@@ -125,6 +125,33 @@ hl.workspace_rule({
 -- Toggle Dropdown Terminal
 hl.bind(mainMod .. " + ALT + RETURN", hl.dsp.workspace.toggle_special("terminal"))
 
+-----------------
+---- KEEPASS ----
+-----------------
+
+-- Same overlay pattern as the dropdown terminal. KeePassXC is a Flatpak and
+-- single-instance, so a launch while it sits hidden in the tray just re-shows
+-- its window, which still goes through the window rule below.
+local keepass = "flatpak run org.keepassxc.KeePassXC"
+
+hl.workspace_rule({
+    workspace        = "special:keepass",
+    on_created_empty = keepass,
+    gaps_out         = { top = 128, right = 256, bottom = 128, left = 256 },
+})
+
+-- Every KeePassXC window (main window, unlock prompt, dialogs) lands on the
+-- overlay, whether it came from the keybind, the launcher or the dock. Not
+-- silent: opening it from anywhere should show it.
+hl.window_rule({
+    name      = "keepass-on-overlay",
+    match     = { class = "^org\\.keepassxc\\.KeePassXC$" },
+    workspace = "special:keepass",
+})
+
+-- Toggle KeePass
+hl.bind(mainMod .. " + ALT + K", hl.dsp.workspace.toggle_special("keepass"))
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
