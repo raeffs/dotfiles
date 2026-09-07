@@ -35,6 +35,8 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("qs ipc call zen toggle"))
 -- Lock screen: its own qs process, so a shell reload cannot drop it
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("qs -n -p ~/.config/quickshell/lock.qml"))
+-- Power menu: lock, suspend, log out, restart, shut down
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("qs ipc call power toggle"))
 
 ------------------------
 ---- WINDOW CONTROL ----
