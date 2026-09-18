@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Starts the win11 VM if it is not running, then opens Looking Glass.
+# Closing Looking Glass does not shut the VM down.
+set -euo pipefail
+
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+domain="win11"
+
+if [[ "$(virsh domstate "$domain")" != "running" ]]; then
+    virsh start "$domain"
+fi
+until [[ "$(virsh domstate "$domain")" == "running" ]]; do
+    sleep 0.5
+done
+
+exec /usr/local/bin/looking-glass-client

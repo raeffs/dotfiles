@@ -158,6 +158,24 @@ hl.window_rule({
 -- Toggle KeePass
 hl.bind(mainMod .. " + ALT + K", hl.dsp.workspace.toggle_special("keepass"))
 
+-------------------
+---- LIGHTROOM ----
+-------------------
+
+-- Windows VM through Looking Glass. The launcher starts the VM when needed.
+local lightroom = os.getenv("HOME") .. "/.local/bin/lightroom"
+
+-- inactive_opacity dims unfocused windows to 0.9, which falsifies the colours
+-- of a photo. The VM window stays fully opaque, focused or not.
+hl.window_rule({
+    name    = "looking-glass-opaque",
+    match   = { class = "^looking-glass-client$" },
+    opacity = "1.0 override 1.0 override",
+})
+
+-- Lightroom
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd(lightroom))
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
