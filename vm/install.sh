@@ -119,7 +119,11 @@ step_looking_glass() {
     build="$(mktemp -d)"
     curl -fL "https://looking-glass.io/artifact/$LG_VERSION/source" -o "$build/source.tar.gz"
     tar -xzf "$build/source.tar.gz" -C "$build"
-    cmake -S "$build/looking-glass-$LG_VERSION/client" -B "$build/out" -DCMAKE_BUILD_TYPE=Release
+    # Looking Glass builds with -Werror. GCC 14 reports a false maybe-uninitialized
+    # warning in the bundled nanosvg, so only that warning is kept non-fatal.
+    cmake -S "$build/looking-glass-$LG_VERSION/client" -B "$build/out" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_FLAGS=-Wno-error=maybe-uninitialized
     cmake --build "$build/out" --parallel
     sudo cmake --install "$build/out"
     echo "$LG_VERSION" | sudo install -D -m 0644 /dev/stdin "$LG_MARKER"
