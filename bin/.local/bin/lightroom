@@ -9,8 +9,14 @@ domain="win11"
 if [[ "$(virsh domstate "$domain")" != "running" ]]; then
     virsh start "$domain"
 fi
-until [[ "$(virsh domstate "$domain")" == "running" ]]; do
+# Gives up after 30 s: a VM that stops again right after its start must not
+# leave this script waiting forever.
+for _ in $(seq 60); do
+    if [[ "$(virsh domstate "$domain")" == "running" ]]; then
+        exec /usr/local/bin/looking-glass-client
+    fi
     sleep 0.5
 done
 
-exec /usr/local/bin/looking-glass-client
+echo "lightroom: $domain did not reach the running state" >&2
+exit 1
