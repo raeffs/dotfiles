@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Host setup for the win11 Looking Glass VM. Idempotent: run it again at any time.
 # Usage: vm/install.sh <step>...
-# Steps: packages groups shm image looking-glass define vfio all
+# Steps: check-packages packages groups shm image looking-glass define vfio all
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -26,15 +26,42 @@ install_file() {
     echo "changed: $2"
 }
 
-step_packages() {
-    sudo apt-get install -y \
-        qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients \
+# Prints "<dev package>=<version of the installed runtime library>". A -dev package
+# depends on the exact version of its library. If the library came from backports,
+# apt still prefers the stable -dev candidate and the install cannot be solved.
+matching_dev() {
+    local version
+    version="$(dpkg-query -W -f='${Version}' "$2" 2>/dev/null)" || true
+    if [[ -n "$version" ]]; then
+        echo "$1=$version"
+    else
+        echo "$1"
+    fi
+}
+
+package_list() {
+    echo qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients \
         virt-manager virtinst ovmf swtpm swtpm-tools \
         binutils-dev cmake fonts-dejavu-core libfontconfig-dev gcc g++ pkg-config \
         libegl-dev libgl-dev libgles-dev libspice-protocol-dev nettle-dev \
         libx11-dev libxcursor-dev libxi-dev libxinerama-dev libxpresent-dev \
-        libxss-dev libxkbcommon-dev libwayland-dev wayland-protocols \
-        libpipewire-0.3-dev libpulse-dev libsamplerate0-dev curl
+        libxss-dev libwayland-dev wayland-protocols \
+        libpipewire-0.3-dev libpulse-dev libsamplerate0-dev curl \
+        "$(matching_dev libxkbcommon-dev libxkbcommon0)"
+}
+
+# Simulation only: needs no root and changes nothing.
+step_check_packages() {
+    local packages
+    read -r -a packages <<< "$(package_list)"
+    apt-get install -s "${packages[@]}" >/dev/null
+    echo "ok: packages are installable"
+}
+
+step_packages() {
+    local packages
+    read -r -a packages <<< "$(package_list)"
+    sudo apt-get install -y "${packages[@]}"
     echo "ok: packages installed"
 }
 
@@ -137,6 +164,7 @@ step_vfio() {
 
 for step in "$@"; do
     case "$step" in
+        check-packages) step_check_packages ;;
         packages)      step_packages ;;
         groups)        step_groups ;;
         shm)           step_shm ;;
