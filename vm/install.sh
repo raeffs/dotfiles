@@ -35,6 +35,7 @@ step_packages() {
         libx11-dev libxcursor-dev libxi-dev libxinerama-dev libxpresent-dev \
         libxss-dev libxkbcommon-dev libwayland-dev wayland-protocols \
         libpipewire-0.3-dev libpulse-dev libsamplerate0-dev curl
+    echo "ok: packages installed"
 }
 
 step_groups() {
@@ -103,6 +104,7 @@ step_define() {
     sudo virsh net-autostart default >/dev/null
     sudo virsh net-list --name | grep -qx default || sudo virsh net-start default
     sudo virsh define "$here/win11.xml"
+    echo "ok: domain win11 defined from $here/win11.xml"
 }
 
 # True if an amdgpu GPU other than the XTX has a connected display.
