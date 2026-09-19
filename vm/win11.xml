@@ -112,6 +112,11 @@
       <source>
         <address domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
       </source>
+      <!-- Without this OVMF runs the card's option ROM when a display is attached at
+           VM boot. The Windows driver then fails on the pre-initialised output
+           (garbled picture, Code 43), and a card in that state does not survive the
+           reset at VM shutdown: it stays off the bus until the host is powered off. -->
+      <rom bar='off'/>
       <address type='pci' domain='0x0000' bus='0x08' slot='0x00' function='0x0' multifunction='on'/>
     </hostdev>
     <hostdev mode='subsystem' type='pci' managed='yes'>
