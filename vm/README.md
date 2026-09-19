@@ -18,14 +18,18 @@ Right Ctrl. The keyboard must have a key that sends Right Ctrl.
 Shut Windows down from its start menu. Do not force the VM off: see
 "Card off the bus" below.
 
-The HDMI dummy plug stays in the HDMI port of the XTX. Without a display on
-the card, Windows has no desktop for Looking Glass to capture.
+Nothing is connected to the XTX. When the card has no monitor, the AMD driver
+makes a virtual display (`AMD vDisplay`, 3840x2160 at 60 Hz), and Looking
+Glass captures it. If a driver update removes the virtual display, put an HDMI
+dummy plug (3840x2160) in the XTX. That was tested and works, also when the
+plug is attached at VM boot.
 
 ## Hardware
 
 1. BIOS: integrated graphics `Force`, primary display `IGFX`, SVM and IOMMU on.
 2. Monitor to the motherboard output.
-3. HDMI dummy plug (3840x2160) in the HDMI port of the XTX.
+3. Nothing on the outputs of the XTX. An HDMI dummy plug is the fallback, see
+   "Daily use".
 
 ## Setup on a new install
 
@@ -54,7 +58,7 @@ the card, Windows has no desktop for Looking Glass to capture.
    virt-xml win11 --edit --video clearxml=yes,model=vga
    ```
 9. Start the VM. Install AMD Adrenalin, then the Looking Glass host **B7**.
-   Set the display of the dummy plug to 3840x2160, 60 Hz, main display.
+   Set the `AMD vDisplay` display to 3840x2160, 60 Hz, main display.
 10. Shut Windows down. `virsh define vm/win11.xml` gives the final state.
 
 `virsh define vm/win11.xml` always restores the final state. It keeps the
@@ -99,9 +103,13 @@ sufficient.
 
 ## Not done
 
-- Direct output of the XTX to the monitor. A DisplayPort cable showed a garbled
-  picture and then no signal. That was before `<rom bar='off'/>`. It was not
-  tested again. With it, monitor input 2 would give a direct 10-bit picture.
+- Direct output of the XTX to the monitor. The cause is not known. With a
+  working direct output, monitor input 2 would give a direct 10-bit picture.
+  - HDMI cable: the monitor reported no source, Windows saw no monitor.
+  - DisplayPort cable before `<rom bar='off'/>`: the firmware picture, then a
+    garbled picture, then no signal. Windows showed Code 43 for the XTX.
+  - DisplayPort cable after it, plugged in while Windows ran: the driver stays
+    healthy, but Windows does not detect the monitor.
 - The `kvmfr` kernel module.
 
 ## Move to the 990 PRO
