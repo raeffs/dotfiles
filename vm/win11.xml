@@ -26,7 +26,9 @@
     <iothreadpin iothread='1' cpuset='0-7,16-23'/>
   </cputune>
   <os firmware='efi'>
-    <type arch='x86_64' machine='q35'>hvm</type>
+    <!-- Pinned: `q35` resolves at define time, so a redefine after a QEMU upgrade
+         would change the machine type under Windows. -->
+    <type arch='x86_64' machine='pc-q35-10.0'>hvm</type>
     <firmware>
       <feature enabled='yes' name='enrolled-keys'/>
       <feature enabled='yes' name='secure-boot'/>
@@ -84,6 +86,9 @@
       <boot order='1'/>
     </disk>
     <interface type='network'>
+      <!-- Fixed: without it every `virsh define` makes a new MAC and Windows sees a
+           new network adapter. -->
+      <mac address='52:54:00:55:33:f7'/>
       <source network='default'/>
       <model type='virtio'/>
     </interface>
