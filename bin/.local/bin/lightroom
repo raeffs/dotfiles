@@ -6,6 +6,15 @@ set -euo pipefail
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 domain="win11"
 
+# libvirt would take the card away from whatever driver holds it. If that is
+# amdgpu (before the vfio setup is complete, or after a rollback), starting
+# the VM tears the GPU out from under the desktop.
+gpu="${LIGHTROOM_GPU_SYSFS:-/sys/bus/pci/devices/0000:03:00.0}"
+if [[ "$(basename "$(readlink -f "$gpu/driver")")" != "vfio-pci" ]]; then
+    echo "lightroom: $gpu is not bound to vfio-pci, not starting $domain" >&2
+    exit 1
+fi
+
 if [[ "$(virsh domstate "$domain")" != "running" ]]; then
     virsh start "$domain"
 fi
