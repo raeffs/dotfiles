@@ -4,6 +4,12 @@
 
 local mainMod = "SUPER"
 
+-- A client can ask the compositor to stop handling shortcuts. Looking Glass
+-- does so while it has focus (grabKeyboardOnFocus), so that every key reaches
+-- the VM. Binds with these options ignore the request: they are the ones
+-- needed to get away from such a window.
+local passthrough = { dont_inhibit = true }
+
 ----------------------
 ---- DEFAULT APPS ----
 ----------------------
@@ -34,16 +40,16 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
 -- Zen mode: bar and dock hidden together
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("qs ipc call zen toggle"))
 -- Lock screen: its own qs process, so a shell reload cannot drop it
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("qs -n -p ~/.config/quickshell/lock.qml"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("qs -n -p ~/.config/quickshell/lock.qml"), passthrough)
 -- Power menu: lock, suspend, log out, restart, shut down
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("qs ipc call power toggle"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("qs ipc call power toggle"), passthrough)
 
 ------------------------
 ---- WINDOW CONTROL ----
 ------------------------
 
 -- Close Window
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + C", hl.dsp.window.close(), passthrough)
 
 ---------------------------
 ---- WORKSPACE CONTROL ----
@@ -99,17 +105,17 @@ hl.bind(mainMod .. " + ALT + O", set_layout("monocle"))
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }), passthrough)
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }), passthrough)
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }), passthrough)
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }), passthrough)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}), passthrough)
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }), passthrough)
 end
 
 ---------------------------
@@ -129,7 +135,7 @@ hl.workspace_rule({
 })
 
 -- Toggle Dropdown Terminal
-hl.bind(mainMod .. " + ALT + RETURN", hl.dsp.workspace.toggle_special("terminal"))
+hl.bind(mainMod .. " + ALT + RETURN", hl.dsp.workspace.toggle_special("terminal"), passthrough)
 
 -----------------
 ---- KEEPASS ----
@@ -156,7 +162,7 @@ hl.window_rule({
 })
 
 -- Toggle KeePass
-hl.bind(mainMod .. " + ALT + K", hl.dsp.workspace.toggle_special("keepass"))
+hl.bind(mainMod .. " + ALT + K", hl.dsp.workspace.toggle_special("keepass"), passthrough)
 
 -------------------
 ---- LIGHTROOM ----
