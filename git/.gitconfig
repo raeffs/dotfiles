@@ -44,6 +44,8 @@
     conflictstyle = zdiff3
 [pull]
     rebase = true
+[feature]
+	manyFiles = true
 
 [include]
     path = windows.gitconfig
