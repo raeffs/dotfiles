@@ -28,7 +28,7 @@
     autocorrect = prompt
 [commit]
     verbose = true
-	gpgSign = false
+	gpgSign = true
 [rerere]
     enabled = true
     autoupdate = true
@@ -54,3 +54,5 @@
     path = local.gitconfig
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
