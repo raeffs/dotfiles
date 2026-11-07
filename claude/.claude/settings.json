@@ -9,6 +9,10 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "pwsh -NoProfile -Command \"& '~/.claude/statusline.ps1'\""
+  },
   "disableClaudeAiConnectors": true,
   "enableArtifact": false,
   "workflowKeywordTriggerEnabled": false,
@@ -46,7 +50,7 @@
   "autoCompactEnabled": false,
   "wheelScrollAccelerationEnabled": false,
   "fileCheckpointingEnabled": false,
-  "remoteControlAtStartup": true,
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }

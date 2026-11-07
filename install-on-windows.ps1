@@ -19,3 +19,4 @@ if ($windowsTerminalPackage) {
 }
 
 New-Item -Path "$TargetDir\.claude\settings.json" -Type SymbolicLink -Value "$DotfilesDir\claude\.claude\settings.json" -Force
+New-Item -Path "$TargetDir\.claude\statusline.ps1" -Type SymbolicLink -Value "$DotfilesDir\claude\.claude\statusline.ps1" -Force
