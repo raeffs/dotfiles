@@ -1,56 +1,68 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
-  "permissions": {
-    "defaultMode": "auto"
-  },
-  "model": "opus[1m]",
-  "statusLine": {
-    "type": "command",
-    "command": "pwsh -NoProfile -Command \"& '~/.claude/statusline.ps1'\""
-  },
-  "disableClaudeAiConnectors": true,
-  "enableArtifact": false,
-  "workflowKeywordTriggerEnabled": false,
-  "enabledPlugins": {
-    "quill@quill": true,
-    "superpowers@claude-plugins-official": true,
-    "skills@skills": true,
-    "cc-plugin-you-should-know@builtin": true,
-    "cc-plugin-telemetry@builtin": false
-  },
-  "extraKnownMarketplaces": {
-    "quill": {
-      "source": {
-        "source": "github",
-        "repo": "raeffs/quill"
-      }
+    "$schema": "https://json.schemastore.org/claude-code-settings.json",
+    "agentPushNotifEnabled": true,
+    "attribution": {
+        "commit": "",
+        "pr": "",
+        "sessionUrl": false
     },
-    "skills": {
-      "source": {
-        "source": "github",
-        "repo": "raeffs/skills"
-      }
-    }
-  },
-  "outputStyle": "raeffs-skills:Orwell",
-  "spinnerTipsEnabled": false,
-  "effortLevel": "high",
-  "autoUpdatesChannel": "latest",
-  "tui": "fullscreen",
-  "skipWorkflowUsageWarning": true,
-  "theme": "dark-ansi",
-  "editorMode": "normal",
-  "verbose": false,
-  "preferredNotifChannel": "auto",
-  "autoCompactEnabled": false,
-  "wheelScrollAccelerationEnabled": false,
-  "fileCheckpointingEnabled": false,
-  "remoteControlAtStartup": false,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+    "autoCompactEnabled": false,
+    "autoUpdatesChannel": "latest",
+    "disableClaudeAiConnectors": true,
+    "editorMode": "normal",
+    "effortLevel": "high",
+    "enableArtifact": false,
+    "enabledPlugins": {
+        "cc-plugin-telemetry@builtin": false,
+        "cc-plugin-you-should-know@builtin": true,
+        "quill@quill": true,
+        "skills@skills": true,
+        "superpowers@claude-plugins-official": true
+    },
+    "extraKnownMarketplaces": {
+        "quill": {
+            "autoUpdate": true,
+            "source": {
+                "repo": "raeffs/quill",
+                "source": "github"
+            }
+        },
+        "skills": {
+            "autoUpdate": true,
+            "source": {
+                "repo": "raeffs/skills",
+                "source": "github"
+            }
+        }
+    },
+    "fileCheckpointingEnabled": false,
+    "model": "opus",
+    "outputStyle": "raeffs-skills:Orwell",
+    "permissions": {
+        "defaultMode": "auto"
+    },
+    "preferredNotifChannel": "auto",
+    "remoteControlAtStartup": false,
+    "skillOverrides": {
+        "fewer-permission-prompts": "off",
+        "init": "off",
+        "run": "off",
+        "schedule": "off",
+        "simplify": "off",
+        "workflow-authoring": "off",
+        "dataviz": "on"
+    },
+    "skipAutoPermissionPrompt": true,
+    "skipWorkflowUsageWarning": true,
+    "spinnerTipsEnabled": false,
+    "statusLine": {
+        "command": "pwsh -NoProfile -Command \"& '~/.claude/statusline.ps1'\"",
+        "type": "command"
+    },
+    "syncClaudeAiSkills": false,
+    "theme": "dark-ansi",
+    "tui": "fullscreen",
+    "verbose": false,
+    "wheelScrollAccelerationEnabled": false,
+    "workflowKeywordTriggerEnabled": false
 }
