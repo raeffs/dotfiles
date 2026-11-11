@@ -236,6 +236,7 @@ hl.device({
 
 -- See keybindings.lua
 require("keybindings")
+require("keybindings-new")
 
 
 --------------------------------
